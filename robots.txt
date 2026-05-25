@@ -1,0 +1,5 @@
+# robots.txt for AutomateLabs (https://automatelabs.in)
+User-agent: *
+Allow: /
+
+Sitemap: https://automatelabs.in/sitemap.xml
