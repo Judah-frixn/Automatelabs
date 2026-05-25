@@ -300,15 +300,6 @@ export default function App() {
   // --- REFS ---
   const manualCityRef = useRef(null);
   const automatedCityRef = useRef(null);
-  const citySunRef = useRef(null);
-  const cityCloud1Ref = useRef(null);
-  const cityCloud2Ref = useRef(null);
-  
-  const gearLRef = useRef(null);
-  const gearMRef = useRef(null);
-  const craneBoxRef = useRef(null);
-  const wtFan1Ref = useRef(null);
-  const wtFan2Ref = useRef(null);
 
   const node1Ref = useRef(null);
   const node2Ref = useRef(null);
@@ -327,21 +318,11 @@ export default function App() {
   const animM2aRef = useRef(null);
   const animM2bRef = useRef(null);
 
-  // --- 1. CITY SCROLL MORPH EFFECT ---
+  // --- 1. DESK SCROLL MORPH EFFECT ---
   useEffect(() => {
     const handleScroll = () => {
       const manualCity = manualCityRef.current;
       const automatedCity = automatedCityRef.current;
-      const citySun = citySunRef.current;
-      const cityCloud1 = cityCloud1Ref.current;
-      const cityCloud2 = cityCloud2Ref.current;
-      
-      const gearL = gearLRef.current;
-      const gearM = gearMRef.current;
-      const craneBox = craneBoxRef.current;
-      
-      const wtFan1 = wtFan1Ref.current;
-      const wtFan2 = wtFan2Ref.current;
 
       if (!manualCity || !automatedCity) return;
 
@@ -354,52 +335,14 @@ export default function App() {
       const thresholdEnd = 0.08;
       const t = Math.max(0, Math.min(1, (progressed - thresholdStart) / (thresholdEnd - thresholdStart)));
 
-      // Morph Manual City
-      manualCity.style.opacity = String((1 - t) * 0.16);
+      // Morph Manual Desk
+      manualCity.style.opacity = String((1 - t) * 0.28);
       manualCity.style.transform = `translateY(${t * -25}px) scale(${1 - t * 0.03})`;
       manualCity.style.filter = `blur(${t * 2.5}px) saturate(${1 - t * 0.3})`;
 
-      // Morph Automated City
-      automatedCity.style.opacity = String(t * 0.16);
+      // Morph Automated Desk
+      automatedCity.style.opacity = String(t * 0.28);
       automatedCity.style.transform = `translateY(${(1 - t) * 25}px) scale(${0.97 + t * 0.03})`;
-
-      // Dynamic speed dials for mechanical gears
-      if (t > 0.85) {
-        if (gearL) gearL.style.animationPlayState = 'paused';
-        if (gearM) gearM.style.animationPlayState = 'paused';
-        if (craneBox) craneBox.style.animationPlayState = 'paused';
-      } else {
-        if (gearL) {
-          gearL.style.animationPlayState = 'running';
-          gearL.style.animationDuration = `${8 * (1 + t * 3)}s`;
-        }
-        if (gearM) {
-          gearM.style.animationPlayState = 'running';
-          gearM.style.animationDuration = `${6 * (1 + t * 3)}s`;
-        }
-        if (craneBox) craneBox.style.animationPlayState = 'running';
-      }
-
-      // Dynamic activation for automated turbines
-      if (t < 0.10) {
-        if (wtFan1) wtFan1.style.animationPlayState = 'paused';
-        if (wtFan2) wtFan2.style.animationPlayState = 'paused';
-      } else {
-        if (wtFan1) {
-          wtFan1.style.animationPlayState = 'running';
-          wtFan1.style.animationDuration = `${3 * (2 - t)}s`;
-        }
-        if (wtFan2) {
-          wtFan2.style.animationPlayState = 'running';
-          wtFan2.style.animationDuration = `${2.5 * (2 - t)}s`;
-        }
-      }
-
-      // Parallax sky nodes
-      const parallax = progressed * 45;
-      if (citySun) citySun.style.transform = `translateY(${parallax * 0.5}px)`;
-      if (cityCloud1) cityCloud1.style.transform = `translateX(${parallax * -0.7}px)`;
-      if (cityCloud2) cityCloud2.style.transform = `translateX(${parallax * -0.4}px)`;
 
       // Body indicators
       if (t > 0.52) {
@@ -436,23 +379,15 @@ export default function App() {
       currentX += (mouseX - currentX) * 0.08;
       currentY += (mouseY - currentY) * 0.08;
 
-      const manualBuildings = document.querySelectorAll('#manualCity .building');
-      const autoBuildings = document.querySelectorAll('#automatedCity .cyber-building');
-      const manualGears = document.querySelectorAll('#manualCity .gear, #manualCity .factory');
-      const autoDrones = document.querySelectorAll('#automatedCity .hover-drone');
-      const turbines = document.querySelectorAll('#automatedCity .wind-turbine');
-      const workers = document.querySelectorAll('#manualCity .worker');
-      const robots = document.querySelectorAll('#automatedCity .robot');
+      const manualLayer = manualCityRef.current?.querySelector('.desk-bg-layer');
+      const autoLayer = automatedCityRef.current?.querySelector('.desk-bg-layer');
 
-      manualBuildings.forEach(b => b.style.transform = `translateX(${currentX * 6}px)`);
-      autoBuildings.forEach(b => b.style.transform = `translateX(${currentX * 6}px)`);
-
-      manualGears.forEach(g => g.style.transform = `translate(${currentX * 12}px, ${currentY * 4}px)`);
-      turbines.forEach(t => t.style.transform = `translate(${currentX * 12}px, ${currentY * 3}px)`);
-      autoDrones.forEach(d => d.style.transform = `translate(${currentX * 18}px, ${currentY * 12}px)`);
-
-      workers.forEach(w => w.style.transform = `translateX(${currentX * 20}px)`);
-      robots.forEach(r => r.style.transform = `translateX(${currentX * 20}px)`);
+      if (manualLayer) {
+        manualLayer.style.transform = `translate(${currentX * 15}px, ${currentY * 15}px)`;
+      }
+      if (autoLayer) {
+        autoLayer.style.transform = `translate(${currentX * 15}px, ${currentY * 15}px)`;
+      }
 
       animationFrameId = requestAnimationFrame(updateParallax);
     };
@@ -758,178 +693,11 @@ export default function App() {
     <>
       {/* ================= FIXED FULL-PAGE BACKGROUND CANVAS ================= */}
       <div className="background-city-container" aria-hidden="true" id="bgCity">
-        <div className="city-wrap">
-          <div className="sky"></div>
-          <div className="sun" id="citySun" ref={citySunRef}></div>
-          <div className="cloud cloud-1" id="cityCloud1" ref={cityCloud1Ref}></div>
-          <div className="cloud cloud-2" id="cityCloud2" ref={cityCloud2Ref}></div>
-          
-          {/* --- MANUAL CITY LAYER --- */}
-          <div className="city city-manual" id="manualCity" ref={manualCityRef}>
-            <div className="building b1">
-              <span className="window glow"></span>
-              <span className="window glow"></span>
-              <span className="window glow"></span>
-            </div>
-            <div className="building b2">
-              <span className="window glow"></span>
-              <span className="window glow"></span>
-            </div>
-            <div className="building b3">
-              <span className="window glow"></span>
-              <span className="window glow"></span>
-              <span className="window glow"></span>
-            </div>
-            <div className="building b4">
-              <span className="window glow"></span>
-              <span className="window glow"></span>
-            </div>
-            
-            {/* Factory Smokestacks */}
-            <div className="factory">
-              <div className="factory-building"></div>
-              <div className="chimney ch1"></div>
-              <div className="chimney ch2"></div>
-              <div className="smoke-puffs">
-                <span className="smoke-bubble sb1"></span>
-                <span className="smoke-bubble sb2"></span>
-                <span className="smoke-bubble sb3"></span>
-                <span className="smoke-bubble sb4"></span>
-                <span className="smoke-bubble sb5"></span>
-              </div>
-            </div>
-
-            {/* Mechanical Spinning Gears */}
-            <div className="factory-gears">
-              <svg className="gear gear-large" id="gearL" ref={gearLRef} viewBox="0 0 100 100">
-                <circle cx="50" cy="50" r="16" fill="none" stroke="#221e1a" strokeWidth="4" />
-                <path fill="var(--accent)" d="M50 8 C48 8 47 10 47 12 L47 16 C47 18 48 20 50 20 C52 20 53 18 53 16 L53 12 C53 10 52 8 50 8 Z 
-                                               M50 80 C48 80 47 82 47 84 L47 88 C47 90 48 92 50 92 C52 92 53 90 53 88 L53 84 C53 82 52 80 50 80 Z
-                                               M8 50 C8 48 10 47 12 47 L16 47 C18 47 20 48 20 50 C20 52 18 53 16 53 L12 53 C10 53 8 52 8 50 Z
-                                               M80 50 C80 48 82 47 84 47 L88 47 C90 47 92 48 92 50 C92 52 90 53 88 53 L84 53 C82 53 80 52 80 50 Z
-                                               M20 20 C18 21 19 23 20 24 L23 27 C24 28 26 27 27 26 C28 25 27 23 26 22 L23 19 C22 18 21 19 20 20 Z
-                                               M73 73 C71 74 72 76 73 77 L76 80 C77 81 79 80 80 79 C81 78 80 76 79 75 L76 72 C75 71 74 72 73 73 Z
-                                               M20 80 C18 79 19 77 20 76 L23 73 C24 72 26 73 27 74 C28 75 27 77 26 78 L23 81 C22 82 21 81 20 80 Z
-                                               M73 20 C71 19 72 17 73 16 L76 13 C77 12 79 13 80 14 C81 15 80 17 79 18 L76 21 C75 22 74 21 73 20 Z" />
-                <circle cx="50" cy="50" r="8" fill="#3a342c"/>
-              </svg>
-              <svg className="gear gear-medium" id="gearM" ref={gearMRef} viewBox="0 0 100 100">
-                <circle cx="50" cy="50" r="14" fill="none" stroke="#221e1a" strokeWidth="4" />
-                <path fill="var(--muted)" d="M50 12 C48 12 47 13 47 15 L47 18 C47 20 48 21 50 21 C52 21 53 20 53 18 L53 15 C53 13 52 12 50 12 Z
-                                             M50 79 C48 79 47 80 47 82 L47 85 C47 87 48 88 50 88 C52 88 53 87 53 85 L53 82 C53 80 52 79 50 79 Z
-                                             M12 50 C12 48 13 47 15 47 L18 47 C20 47 21 48 21 50 C21 52 20 53 18 53 L15 53 C13 53 12 52 12 50 Z
-                                             M79 50 C79 48 80 47 82 47 L85 47 C87 47 88 48 88 50 C88 52 87 53 85 53 L82 53 C80 53 79 52 79 50 Z
-                                             M23 23 C21 24 22 26 23 27 L25 29 C26 30 28 29 29 28 C30 27 29 25 28 24 L26 22 C25 21 24 22 23 23 Z
-                                             M71 71 C69 72 70 74 71 75 L73 77 C74 78 76 77 77 76 C78 75 77 73 76 72 L74 70 C73 69 72 70 71 71 Z
-                                             M23 71 C21 70 22 68 23 67 L25 65 C26 64 28 65 29 66 C30 67 29 69 28 70 L26 72 C25 73 24 72 23 71 Z
-                                             M71 23 C69 22 70 20 71 19 L73 17 C74 16 76 17 77 18 C78 19 77 21 76 22 L74 24 C73 25 72 24 71 23 Z" />
-                <circle cx="50" cy="50" r="6" fill="#3a342c"/>
-              </svg>
-            </div>
-
-            {/* Hoisting Crane */}
-            <div className="crane" id="craneHoist">
-              <div className="crane-boom"></div>
-              <div className="crane-line" id="craneLine"></div>
-              <div className="crane-cargo-box" id="craneBox" ref={craneBoxRef}></div>
-            </div>
-
-            {/* Conveyor belt */}
-            <div className="conveyor">
-              <div className="conveyor-line"></div>
-              <div className="conveyor-cbox cbox1"></div>
-              <div className="conveyor-cbox cbox2"></div>
-            </div>
-
-            <div className="ground"></div>
-
-            {/* Silhouetted busy workers */}
-            <div className="workers">
-              <div className="worker w1"></div>
-              <div className="worker w2"></div>
-              <div className="worker w3"></div>
-              <div className="worker w4"></div>
-            </div>
-
-            {/* Floating paperwork drifts */}
-            <div className="flying-papers">
-              <span className="paper-sheet ps1"></span>
-              <span className="paper-sheet ps2"></span>
-              <span className="paper-sheet ps3"></span>
-            </div>
-          </div>
-
-          {/* --- AUTOMATED CITY LAYER --- */}
-          <div className="city city-automated" id="automatedCity" ref={automatedCityRef}>
-            {/* Futuristic buildings */}
-            <div className="cyber-building cb1">
-              <div className="server-array">
-                <span className="s-light active"></span>
-                <span className="s-light"></span>
-                <span className="s-light active"></span>
-                <span className="s-light"></span>
-              </div>
-            </div>
-            <div className="cyber-building cb2">
-              <div className="server-array">
-                <span className="s-light"></span>
-                <span className="s-light active"></span>
-                <span className="s-light"></span>
-                <span className="s-light active"></span>
-              </div>
-            </div>
-            <div className="cyber-building cb3">
-              <div className="server-array">
-                <span className="s-light active"></span>
-                <span className="s-light active"></span>
-              </div>
-            </div>
-
-            {/* Clean Power wind turbines */}
-            <div className="wind-turbine wt1">
-              <div className="wt-pole"></div>
-              <div className="wt-fan" id="wtFan1" ref={wtFan1Ref}>
-                <span className="wt-blade bld1"></span>
-                <span className="wt-blade bld2"></span>
-                <span className="wt-blade bld3"></span>
-              </div>
-            </div>
-            <div className="wind-turbine wt2">
-              <div className="wt-pole"></div>
-              <div className="wt-fan" id="wtFan2" ref={wtFan2Ref}>
-                <span className="wt-blade bld1"></span>
-                <span className="wt-blade bld2"></span>
-                <span className="wt-blade bld3"></span>
-              </div>
-            </div>
-
-            {/* Hovering autonomous drones with scan lights */}
-            <div className="hover-drone hd1" id="drone1">
-              <div className="drone-rotors"></div>
-              <div className="drone-ray"></div>
-            </div>
-            <div className="hover-drone hd2" id="drone2">
-              <div className="drone-rotors"></div>
-              <div className="drone-ray"></div>
-            </div>
-
-            {/* Laser data highways */}
-            <div className="data-highways">
-              <span className="d-beam db1"></span>
-              <span className="d-beam db2"></span>
-              <span className="d-beam db3"></span>
-            </div>
-
-            <div className="ground" style={{ background: 'linear-gradient(to top, #142d2a, #1b3d37)' }}></div>
-
-            {/* Silhouetted robot workers (morph target) */}
-            <div className="robots" id="automatedRobots">
-              <div className="robot r1"></div>
-              <div className="robot r2"></div>
-              <div className="robot r3"></div>
-              <div className="robot r4"></div>
-            </div>
-          </div>
+        <div className="desk-bg-wrap" ref={manualCityRef}>
+          <div className="desk-bg-layer desk-bg-manual"></div>
+        </div>
+        <div className="desk-bg-wrap" ref={automatedCityRef} style={{ opacity: 0 }}>
+          <div className="desk-bg-layer desk-bg-automated"></div>
         </div>
       </div>
 
@@ -959,20 +727,71 @@ export default function App() {
         {/* Hero Section */}
         <section className="hero" id="home">
           <div className="container">
-            <div className="hero-copy">
-              <p className="eyebrow">AI-Powered Automation Systems</p>
-              <h1>Your business operations, <br/><span className="accent-text">finally automated.</span></h1>
-              <p>
-                Ditch spreadsheets, scattered messages, and manual follow-ups. We build AI-powered workflows that capture leads, sync systems, and run operations automatically.
-              </p>
-              <div className="hero-ctas">
-                <a className="btn btn-primary" href="#cta-section">Book a Strategy Call</a>
-                <a className="btn btn-secondary" href="#workflows">See Live Automations</a>
+            <div className="hero-grid">
+              <div className="hero-copy">
+                <p className="eyebrow">AI-Powered Automation Systems</p>
+                <h1>AI-Powered <br/><span className="accent-text">Automation Systems</span></h1>
+                <p>
+                  Custom-built, results-driven workflows that streamline your business operations.
+                </p>
+                <div className="hero-ctas">
+                  <a className="btn btn-primary" href="#cta-section">Book a Strategy Call</a>
+                  <a className="btn btn-secondary" href="#workflows">See Live Automations</a>
+                </div>
+                <div className="hero-benefits">
+                  <span className="benefit-tag">Custom Built</span>
+                  <span className="benefit-tag">Results Driven</span>
+                  <span className="benefit-tag">Secure & Reliable</span>
+                </div>
               </div>
-              <div className="hero-benefits">
-                <span className="benefit-tag">Custom Built</span>
-                <span className="benefit-tag">Results Driven</span>
-                <span className="benefit-tag">Secure & Reliable</span>
+
+              {/* Premium Control Widget Card */}
+              <div className="hero-widget-card">
+                <div className="widget-row">
+                  <div className="widget-icon-wrap">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="9" y="3" width="6" height="5" rx="1" />
+                      <rect x="3" y="15" width="6" height="5" rx="1" />
+                      <rect x="15" y="15" width="6" height="5" rx="1" />
+                      <path d="M12 8v3M6 11h12M6 11v4M18 11v4" />
+                    </svg>
+                  </div>
+                  <div className="widget-info">
+                    <span className="widget-title">DESIGN</span>
+                    <span className="widget-desc">Map & plan workflows</span>
+                  </div>
+                </div>
+
+                <div className="widget-row">
+                  <div className="widget-icon-wrap">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M4 20h16M7 20v-3l4-5M11 12l5-5M16 7h4v2" />
+                      <circle cx="7" cy="17" r="1.5" />
+                      <circle cx="11" cy="12" r="1.5" />
+                      <circle cx="16" cy="7" r="1.5" />
+                    </svg>
+                  </div>
+                  <div className="widget-info">
+                    <span className="widget-title">AUTOMATE</span>
+                    <span className="widget-desc">Build & deploy AI workflows</span>
+                  </div>
+                </div>
+
+                <div className="widget-row">
+                  <div className="widget-icon-wrap">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="18" y1="20" x2="18" y2="10" strokeWidth="2.5" />
+                      <line x1="12" y1="20" x2="12" y2="4" strokeWidth="2.5" />
+                      <line x1="6" y1="20" x2="6" y2="14" strokeWidth="2.5" />
+                      <path d="M3 16l6-6 4 4 8-8" />
+                      <polyline points="16 6 21 6 21 11" />
+                    </svg>
+                  </div>
+                  <div className="widget-info">
+                    <span className="widget-title">OPTIMIZE</span>
+                    <span className="widget-desc">Monitor, learn & improve</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

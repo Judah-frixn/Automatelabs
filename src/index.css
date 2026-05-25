@@ -2420,3 +2420,125 @@ nav a:hover {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ==========================================================================
+   DESK BACKDROP SYSTEM & MORPH COORDINATES
+   ========================================================================== */
+.desk-bg-wrap {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), filter 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: opacity, transform, filter;
+}
+
+.desk-bg-layer {
+  position: absolute;
+  inset: -20px;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+.desk-bg-manual {
+  background-image: url('/cluttered_manual_office.png');
+}
+
+.desk-bg-automated {
+  background-image: url('/modern_automated_lab.png');
+}
+
+/* ==========================================================================
+   HERO LAYOUT GRID & HERO WIDGET CARD
+   ========================================================================== */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3.5rem;
+  align-items: center;
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.hero-widget-card {
+  background: rgba(255, 253, 250, 0.72);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.5rem 1.8rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 380px;
+  width: 100%;
+  margin-left: auto;
+  transition: var(--transition);
+}
+
+.hero-widget-card:hover {
+  transform: translateY(-4px) rotateX(1deg) rotateY(-1deg);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(31, 29, 25, 0.15);
+}
+
+.widget-row {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.widget-icon-wrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: rgba(31, 29, 25, 0.04);
+  color: var(--ink);
+  transition: var(--transition);
+}
+
+.widget-icon-wrap svg {
+  width: 22px;
+  height: 22px;
+  stroke-width: 2;
+  transition: var(--transition);
+}
+
+.hero-widget-card:hover .widget-row:hover .widget-icon-wrap {
+  background: rgba(202, 122, 45, 0.08);
+  color: var(--accent);
+}
+
+.widget-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.widget-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+.widget-desc {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 500;
+  line-height: 1.35;
+}
+
