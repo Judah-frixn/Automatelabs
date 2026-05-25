@@ -261,7 +261,137 @@ const sliderMath = [
   }
 ];
 
+const servicesMap = {
+  'ai-workflow-automation': {
+    title: 'AI Workflow Automation',
+    tagline: 'Hire a dedicated AI workflow automation consultant to streamline your operations.',
+    intro: 'We build custom AI agents, automated workflows, and robust database syncs designed to run your business operations with zero human friction. Aligned to the dynamic growth of Indian enterprises with international client outreach.',
+    keyword1: 'AI workflow automation',
+    keyword2: 'workflow automation consultant',
+    keyword3: 'AI workflow automation for service businesses',
+    bullets: [
+      'Eliminate repetitive tasks using custom Python & NodeJS script blocks.',
+      'Deploy semantic retrieval agents (RAG) trained on your company manuals.',
+      'Active notification loops synced between webhooks and team channels.',
+      'Secure, scalable API architectures connecting local data structures with global web layers.'
+    ],
+    tools: ['Zapier', 'Make.com', 'n8n.io', 'OpenAI', 'Python', 'NodeJS']
+  },
+  'business-process-automation-services': {
+    title: 'Business Process Automation Services',
+    tagline: 'Scale output and automate repetitive business tasks seamlessly.',
+    intro: 'Standardize operations with modern business process automation services. We map, design, and deploy robust multi-step logical paths that handle core administrative and client pipelines automatically.',
+    keyword1: 'business process automation services',
+    keyword2: 'automate repetitive business tasks',
+    keyword3: 'business workflow optimization',
+    bullets: [
+      'End-to-end database synchronizations executing in real-time.',
+      'Automated invoice billing and tabular receipt generation.',
+      'Intelligent task routing and multi-branch approval pathways.',
+      'Custom performance dashboards displaying workflow execution telemetry.'
+    ],
+    tools: ['Salesforce', 'Zoho CRM', 'Airtable', 'SQL', 'Make.com', 'n8n.io']
+  },
+  'small-business-automation-services': {
+    title: 'Small Business Automation Services',
+    tagline: 'Practical AI automation for small and mid-sized businesses.',
+    intro: 'Affordable, results-driven small business automation services tailored to help growing Indian businesses scale globally. Save time, reduce manual administrative overhead, and automate your lead capture.',
+    keyword1: 'small business automation services',
+    keyword2: 'AI automation for small businesses',
+    keyword3: 'best AI automation services for small business',
+    bullets: [
+      'Connect marketing forms directly to CRMs, spreadsheets, and calendars.',
+      'Automate appointment scheduling and instant WhatsApp/Email follow-up replies.',
+      'Reduce manual data entry by up to 90% across your departments.',
+      'Continuous 24/7 background execution to capture interest outside office hours.'
+    ],
+    tools: ['WhatsApp API', 'Calendly', 'Google Workspace', 'Hubspot', 'Make.com', 'Zapier']
+  },
+  'chatgpt-automation-for-business': {
+    title: 'ChatGPT Automation for Business',
+    tagline: 'Custom OpenAI LLM models & AI customer support automation.',
+    intro: 'Unlock the power of large language models with custom ChatGPT automation for business. Automate customer support replies, draft complex email copy contextually, and extract key parameters from incoming documents.',
+    keyword1: 'ChatGPT automation for business',
+    keyword2: 'automate customer support replies with ChatGPT',
+    keyword3: 'AI customer support automation',
+    bullets: [
+      'Contextual vector search (RAG) retrieving instant, verified answers.',
+      'Dynamic AI qualifiers separating genuine inquiries from noise.',
+      'Automatic ticket escalations to human support lines when confidence drops.',
+      'Direct API integrations with OpenAI models operating under 1.5 seconds.'
+    ],
+    tools: ['OpenAI API', 'LangChain', 'Pinecone', 'ChatGPT', 'NodeJS', 'Python']
+  },
+  'crm-workflow-automation': {
+    title: 'CRM Workflow Automation Services',
+    tagline: 'Automate CRM data entry, sync systems, and optimize pipelines.',
+    intro: 'Professional CRM automation services focusing on HubSpot, Salesforce, Zoho, and Airtable. Connect contact forms, spreadsheet registries, and databases to automate lead follow-up.',
+    keyword1: 'CRM automation services',
+    keyword2: 'CRM workflow automation',
+    keyword3: 'automate CRM data entry',
+    bullets: [
+      'Instant client webhook capture triggering custom sales pipelines.',
+      'Multi-directional field syncing to eliminate database reconciliation gaps.',
+      'Automated lead qualification scoring and smart rep routing.',
+      'Elimination of manual database tracking and duplicate record creation.'
+    ],
+    tools: ['Hubspot CRM', 'Salesforce API', 'Zoho CRM', 'Airtable Sync', 'Zapier Webhooks']
+  },
+  'no-code-automation-services': {
+    title: 'No-Code Automation Agency & Services',
+    tagline: 'Professional workflow bridges using Zapier, Make, and n8n.',
+    intro: 'A leading no-code automation agency building reliable multi-step integrations. Connect your essential business tools and coordinate secure data transfers without writing custom backend code.',
+    keyword1: 'no-code automation services',
+    keyword2: 'no-code automation agency',
+    keyword3: 'custom automation workflows for small business',
+    bullets: [
+      'Zapier and Make integrations featuring error tolerance and retry logic.',
+      'Custom JS/Python logic modules embedded inside no-code paths.',
+      'Comprehensive workflow blueprinting before launching integrations.',
+      'Scale your operations without scaling unnecessary software license overhead.'
+    ],
+    tools: ['Zapier', 'Make.com', 'n8n.io', 'Airtable', 'Trello', 'Slack APIs']
+  },
+  'ai-customer-support-automation': {
+    title: 'AI Customer Support Automation',
+    tagline: 'Deploy 24/7 smart context-aware agents to delight customers.',
+    intro: 'Elevate support metrics with advanced AI customer support automation. Deploy context-aware digital assistants trained on your specific brand standards, product guides, and FAQs.',
+    keyword1: 'AI customer support automation',
+    keyword2: 'automate customer support replies with ChatGPT',
+    keyword3: 'best AI automation services for small business',
+    bullets: [
+      'Instant, contextually-drafted replies responding to customer emails.',
+      'Automatic document scanners reading and routing support tickets.',
+      'Direct WhatsApp Business and Slack notifications for immediate follow-up.',
+      'Proactive appointment bookings and calendar slots management.'
+    ],
+    tools: ['OpenAI GPT-4', 'WhatsApp Business', 'Slack bot', 'Gmail API', 'Pinecone Database']
+  },
+  'data-integration-services': {
+    title: 'Data Integration Services',
+    tagline: 'Automate spreadsheet reporting and eliminate manual data entry.',
+    intro: 'Ensure absolute accuracy across operations with custom data integration services for small business. Automatically consolidate databases, sync client sheets, and generate reports.',
+    keyword1: 'data integration services for small business',
+    keyword2: 'automate spreadsheet reporting',
+    keyword3: 'reduce manual data entry with automation',
+    bullets: [
+      'Consolidate disjointed CSV, Excel, and SQL files into a single ledger.',
+      'Automate recurring analytical reporting and database updates.',
+      'Direct webhook triggers moving sales logs instantly between records.',
+      'Active validation checks rejecting malformed coordinates or empty cells.'
+    ],
+    tools: ['Postgres SQL', 'Google Sheets API', 'Excel Automation', 'Make.com', 'Python Pandas']
+  }
+};
+
 export default function App() {
+  // --- SIMPLE PATH-BASED ROUTING ---
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
+  const cleanPath = currentPath.replace(/\/index\.html$/, '').replace(/\/$/, '');
+  const serviceKey = cleanPath.split('/').pop();
+  const isServicePage = servicesMap.hasOwnProperty(serviceKey);
+  const activeService = isServicePage ? servicesMap[serviceKey] : null;
+
   // --- TELEMETRY FEED STATE ---
   const [logs, setLogs] = useState([
     { id: 1, title: 'Invoice Sent', desc: 'INV-9824 dispatched to client', meta: '$2,550', type: 'invoice', metaClass: 'price' },
@@ -724,15 +854,84 @@ export default function App() {
           </div>
         </header>
 
-        {/* Hero Section */}
-        <section className="hero" id="home">
-          <div className="container">
+        {isServicePage ? (
+          /* ================= DEDICATED SERVICE SUBPAGE VIEW ================= */
+          <>
+            <section className="service-hero">
+              <div className="container">
+                <div className="service-hero-content">
+                  <p className="eyebrow">Practical AI Service Offering</p>
+                  <h1>
+                    {activeService.title} <br/>
+                    <span className="accent-text">for Small & Mid-Sized Businesses</span>
+                  </h1>
+                  <p className="intro-text">
+                    {activeService.intro}
+                  </p>
+                  <div className="service-ctas">
+                    <a className="btn btn-primary" href="https://calendly.com" target="_blank" rel="noreferrer">
+                      Book an AI Strategy Call
+                    </a>
+                    <a className="btn btn-secondary" href="/">
+                      Back to Homepage
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section className="service-details-section" style={{ paddingBottom: '8rem' }}>
+              <div className="container">
+                <div className="service-grid">
+                  {/* Core Deliverables */}
+                  <div className="deliverables-pane">
+                    <h3>Core Deliverables</h3>
+                    <ul className="deliverables-list">
+                      {activeService.bullets.map((bullet, idx) => (
+                        <li key={idx}>
+                          <span className="check-circle">✓</span>
+                          <div>{bullet}</div>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Architecture & Targeting */}
+                  <div className="strategy-pane">
+                    <div className="card strategy-card">
+                      <div className="tools-row">
+                        <h4>Primary Technology Stack</h4>
+                        <div className="tools-flex">
+                          {activeService.tools.map((tool, idx) => (
+                            <span key={idx} className="tool-badge">{tool}</span>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="regions-card">
+                        <h4>India-Centric with Global Outreach</h4>
+                        <p>
+                          Operated from India's tech corridor (Bengaluru, Mumbai, Chennai, Delhi NCR, Hyderabad, Pune, Kolkata). We build robust operational bridges for domestic leaders and handle deployment cycles for partners in the US, UK, Canada, Australia, and UAE.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </>
+        ) : (
+          /* ================= PRIMARY HOMEPAGE CONTENT ================= */
+          <>
+            {/* Hero Section */}
+            <section className="hero" id="home">
+              <div className="container">
             <div className="hero-grid">
               <div className="hero-copy">
-                <p className="eyebrow">AI-Powered Automation Systems</p>
-                <h1>AI-Powered <br/><span className="accent-text">Automation Systems</span></h1>
+                <p className="eyebrow">Practical AI Automation Systems</p>
+                <h1>AI Automation for <br/><span className="accent-text">Small and Mid-Sized Businesses</span></h1>
                 <p>
-                  Custom-built, results-driven workflows that streamline your business operations.
+                  Drowning in busywork? Automate repetitive tasks, connect your tools, and build AI-driven workflows that save time and reduce errors.
                 </p>
                 <div className="hero-ctas">
                   <a className="btn btn-primary" href="#cta-section">Book a Strategy Call</a>
@@ -1411,6 +1610,103 @@ export default function App() {
           </div>
         </section>
 
+        {/* Frequently Asked Questions Accordion */}
+        <section className="faq-section" id="faq-section">
+          <div className="container">
+            <div className="section-title-wrap">
+              <span className="eyebrow">Frequently Asked Questions</span>
+              <h2>Common questions about <br/><span>business process automation services.</span></h2>
+              <p className="section-desc">Understand how practical AI automation can streamline your day-to-day operations.</p>
+            </div>
+
+            <div className="faq-accordion-container">
+              <div className="card faq-item-card">
+                <details className="faq-details" open>
+                  <summary className="faq-summary">
+                    <h4>How to automate repetitive tasks in a small business?</h4>
+                    <span className="faq-arrow">▼</span>
+                  </summary>
+                  <div className="faq-answer">
+                    <p>
+                      Automating repetitive tasks begins by mapping your manual processes, document pathways, and data flows. Automate Labs builds custom script relays, webhook triggers, and no-code pipelines using tools like Zapier, Make, and n8n to connect your contact forms, spreadsheets, and databases automatically. This eliminates the need for manual record copies.
+                    </p>
+                  </div>
+                </details>
+              </div>
+
+              <div className="card faq-item-card">
+                <details className="faq-details">
+                  <summary className="faq-summary">
+                    <h4>What are the best AI automation services for small business operations?</h4>
+                    <span className="faq-arrow">▼</span>
+                  </summary>
+                  <div className="faq-answer">
+                    <p>
+                      The most practical and valuable AI automation services for small businesses focus on lead ingestion, intelligent response, and CRM database synchronization. Instead of chasing broad or complex artificial intelligence experiments, we focus on practical systems that route new ads leads under 5 seconds, sync Airtable and HubSpot fields automatically, and deploy custom context-aware AI support agents trained on your technical guides.
+                    </p>
+                  </div>
+                </details>
+              </div>
+
+              <div className="card faq-item-card">
+                <details className="faq-details">
+                  <summary className="faq-summary">
+                    <h4>Why hire an AI workflow automation consultant instead of using pre-made templates?</h4>
+                    <span className="faq-arrow">▼</span>
+                  </summary>
+                  <div className="faq-answer">
+                    <p>
+                      Simple, single-trigger template recipes break down under real-world conditions. An AI workflow automation consultant designs custom systems built around your specific business rules, incorporating structured exception handling, automatic data sanitization, and custom NodeJS/Python script blocks. This guarantees robust error-retry tolerance and prevents silent API workflow breaks.
+                    </p>
+                  </div>
+                </details>
+              </div>
+
+              <div className="card faq-item-card">
+                <details className="faq-details">
+                  <summary className="faq-summary">
+                    <h4>Do your CRM automation services cover Zoho, HubSpot, and Salesforce?</h4>
+                    <span className="faq-arrow">▼</span>
+                  </summary>
+                  <div className="faq-answer">
+                    <p>
+                      Yes, our CRM workflow automation and syncing services integrate with Zoho, HubSpot, Salesforce, Airtable, and Notion. We construct custom field mappings, bi-directional sync rules, and instant follow-up alerts to automate your CRM data entry and eliminate human database reconciliation errors entirely.
+                    </p>
+                  </div>
+                </details>
+              </div>
+
+              <div className="card faq-item-card">
+                <details className="faq-details">
+                  <summary className="faq-summary">
+                    <h4>How does ChatGPT automation for business improve customer support?</h4>
+                    <span className="faq-arrow">▼</span>
+                  </summary>
+                  <div className="faq-answer">
+                    <p>
+                      By deploying custom OpenAI ChatGPT models integrated directly with your support inbox or communication channels, we automate customer support replies to common questions in under 2 minutes. The agent cross-references incoming messages with a secure semantic vector database (RAG) containing your company specifications, drafting contextually accurate responses and escalating to human staff only when necessary.
+                    </p>
+                  </div>
+                </details>
+              </div>
+
+              <div className="card faq-item-card">
+                <details className="faq-details">
+                  <summary className="faq-summary">
+                    <h4>Are your automation consultant services based in India?</h4>
+                    <span className="faq-arrow">▼</span>
+                  </summary>
+                  <div className="faq-answer">
+                    <p>
+                      Our primary engineering office is located in Bengaluru, Karnataka, India. We heavily support high-growth Indian enterprises across Bengaluru, Mumbai, Chennai, Delhi NCR, Hyderabad, Pune, and Kolkata, while maintaining a reliable base of international delivery for clients in the United States, Canada, United Kingdom, Australia, and the United Arab Emirates.
+                    </p>
+                  </div>
+                </details>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Scale & Call Booking CTA */}
         <section className="cta-section" id="cta-section">
           <div className="container">
@@ -1428,6 +1724,8 @@ export default function App() {
             </div>
           </div>
         </section>
+      </>
+    )}
 
         {/* Footer */}
         <footer className="footer-wrap">
