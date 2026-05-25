@@ -2168,11 +2168,11 @@ nav a:hover {
    ========================================================================== */
 @media (max-width: 1024px) {
   section {
-    padding: 6rem 0 3rem;
+    padding: 5rem 0 2.5rem;
   }
   
   .hero {
-    padding-top: 11rem;
+    padding-top: 9rem;
     min-height: auto;
   }
 }
@@ -2180,6 +2180,37 @@ nav a:hover {
 @media (max-width: 768px) {
   nav {
     display: none; /* Hide header links on smaller screens */
+  }
+  
+  .hero-copy {
+    text-align: center;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  .hero-ctas {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .hero-benefits {
+    justify-content: center;
+  }
+
+  .hero-widget-card {
+    margin: 2rem auto 0;
+  }
+
+  /* Protect simulator nodes and connectors from squishing by allowing horizontal swipe */
+  .simulator-workspace {
+    overflow-x: auto;
+    width: 100%;
+    padding-bottom: 1.5rem;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .sim-canvas-card {
+    min-width: 680px; /* Locks nodes layout to prevent overlap and keeps Bezier line alignment solid */
   }
   
   .calc-grid {
@@ -2216,6 +2247,31 @@ nav a:hover {
     flex-direction: column;
     gap: 1rem;
     text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: clamp(1.8rem, 6.5vw, 2.3rem) !important;
+  }
+  
+  h2 {
+    font-size: clamp(1.4rem, 5.5vw, 1.8rem) !important;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.8rem;
+  }
+
+  .hero-ctas .btn {
+    width: 100%;
+  }
+
+  .topbar .btn {
+    padding: 0.45rem 1rem;
+    font-size: 0.8rem;
   }
 }
 
