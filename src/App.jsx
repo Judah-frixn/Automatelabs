@@ -838,7 +838,10 @@ export default function App() {
         <header className="topbar" id="topbar">
           <div className="container header-container">
             <a className="brand" href="/">
-              <img src="/favicon.svg" alt="Automate Labs Logo" className="brand-logo-svg" aria-hidden="true" />
+              <svg className="brand-logo-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <polygon points="3,20 6,14 10,14 7,20" />
+                <polygon points="9,4 13.5,4 19,20 14.5,20" />
+              </svg>
               automatelabs
             </a>
             <nav>
@@ -1729,7 +1732,10 @@ export default function App() {
           <div className="container">
             <div className="footer-brand-pane">
               <a className="brand" href="/" style={{ marginBottom: '0.5rem' }}>
-                <img src="/favicon.svg" alt="Automate Labs Logo" className="brand-logo-svg" aria-hidden="true" />
+                <svg className="brand-logo-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <polygon points="3,20 6,14 10,14 7,20" />
+                  <polygon points="9,4 13.5,4 19,20 14.5,20" />
+                </svg>
                 automatelabs
               </a>
               <p>We build custom AI agents, automated workflows, and CRM integrations to eliminate repetitive operations and scale operations without overhead.</p>
